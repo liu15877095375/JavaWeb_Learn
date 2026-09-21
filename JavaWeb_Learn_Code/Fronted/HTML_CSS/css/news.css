@@ -22,3 +22,9 @@ p{
     /* 设置首行两格缩进 */
     text-indent: 2em;
 }
+
+#content-container{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
