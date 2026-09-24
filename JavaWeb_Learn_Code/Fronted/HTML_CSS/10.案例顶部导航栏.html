@@ -3,6 +3,7 @@
 Tlias智能学习辅助系统;还要展示一个.“退出登录”的超链接。 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,46 @@ Tlias智能学习辅助系统;还要展示一个.“退出登录”的超链接�
     <!-- 外部CSS样式引入 -->
     <link rel="stylesheet" href="css/LearnSystem.css">
 </head>
+
 <body>
     <!-- 顶部导航栏 -->
     <div class="top-nav">
         <div class="nav-title">Tlias智能学习辅助系统</div>
         <a href="#" class="logout-link">退出登录</a>
     </div>
+
+    <div class="background‑color">
+        <!-- action是保存路径，method是提交的方法 -->
+        <form action="/save" method="post" class="search-wrap">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="gender">性别</label>
+                <select name="gender" id="gender">
+                    <option value="">请选择</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+            <div>
+                <label for="position">职位</label>
+                <select name="position" id="position">
+                    <option value="">请选择</option>
+                    <option value="1">班主任</option>
+                    <option value="2">讲师</option>
+                    <option value="3">学工主管</option>
+                    <option value="4">教研主管</option>
+                    <option value="5">咨询师</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button type="submit">查询</button>
+                <button type="reset">清空</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

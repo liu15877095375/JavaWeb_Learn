@@ -1,47 +1,81 @@
 /* 全局样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        /* 顶部导航栏样式 */
-        .top-nav {
-            /* 设置盒子背景为浅灰色。 */
-            background-color: #e5e5e5;
-            /* 上下内边距 0，左右内边距 24px；让里面内容距离盒子左右两边留出空隙，不会贴紧边缘。 */
-            padding: 0 24px;
-            /* 固定导航栏盒子高度 56 像素。 */
-            height: 56px;
-            /* flex布局实现左右分布 */
-            /* 开启Flex 弹性布局；此时这个 div 的直接子元素变成弹性项目，可以用 flex 属性控制排布。 */
-            display: flex;
-            /* 水平方向：两边对齐。第一个子元素靠最左边，最后一个子元素靠最右边，中间空余空间放两者之间 → 实现标题居左、退出链接居右。 */
-            justify-content: space-between;
-            /* 垂直方向居中对齐。子元素（标题、链接）在 56px 高的导航栏里面上下居中，不会贴顶部或者底部。 */
-            align-items: center;
-        }
-        /* 标题样式 */
-        .nav-title {
-            /* 加粗醒目 */
-            font-weight: bold;
-            /* 设置字体大小 */
-            font-size: 20px;
-            /* 设置字体颜色 */
-            color: black;
-            /* 设置字体样式 */
-            font-family: "仿宋";
-        }
-        /* 退出登录超链接样式 */
-        .logout-link {
-            /* 设置字体颜色 */
-            color: black;
-            /* 去除下划线 */
-            text-decoration: none;
-            /* 设置字体大小 */
-            font-size: 14px;
-            /* 设置字体样式 */
-            font-family: "仿宋";
-        }
-        .logout-link:hover {
-            text-decoration: underline;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 顶部导航栏样式 */
+.top-nav {
+    /* 设置盒子背景为浅灰色。 */
+    background-color: #e5e5e5;
+    /* 上下内边距 0，左右内边距 24px；让里面内容距离盒子左右两边留出空隙，不会贴紧边缘。 */
+    padding: 0 24px;
+    /* 固定导航栏盒子高度 56 像素。 */
+    height: 56px;
+    /* flex布局实现左右分布 */
+    /* 开启Flex 弹性布局；此时这个 div 的直接子元素变成弹性项目，可以用 flex 属性控制排布。 */
+    display: flex;
+    /* 水平方向：两边对齐。第一个子元素靠最左边，最后一个子元素靠最右边，中间空余空间放两者之间 → 实现标题居左、退出链接居右。 */
+    justify-content: space-between;
+    /* 垂直方向居中对齐。子元素（标题、链接）在 56px 高的导航栏里面上下居中，不会贴顶部或者底部。 */
+    align-items: center;
+}
+
+/* 标题样式 */
+.nav-title {
+    /* 加粗醒目 */
+    font-weight: bold;
+    /* 设置字体大小 */
+    font-size: 20px;
+    /* 设置字体颜色 */
+    color: black;
+    /* 设置字体样式 */
+    font-family: "仿宋";
+}
+
+/* 退出登录超链接样式 */
+.logout-link {
+    /* 设置字体颜色 */
+    color: black;
+    /* 去除下划线 */
+    text-decoration: none;
+    /* 设置字体大小 */
+    font-size: 14px;
+    /* 设置字体样式 */
+    font-family: "仿宋";
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+.search-wrap{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:50px;
+}
+
+.search-wrap input,
+.search-wrap select {
+    width: 200px;
+    height: 36px;
+    padding:0 8px;
+}
+
+/*按钮组内部再开flex，按钮之间间距调小，比如12px*/
+.btn-group{
+    display:flex;
+    gap:12px;
+}
+/*按钮高度和输入框保持一样36px，左右给内边控宽度*/
+.btn-group button{
+    height:36px;
+    padding:0 16px;
+}
+
+.background‑color{
+    /* 设置背景颜色为淡灰色 */
+    background-color: #f5f5f5;
+}

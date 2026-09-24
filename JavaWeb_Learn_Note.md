@@ -299,3 +299,27 @@ form表单的示例代码和相关细节如图所示，值得注意的是，需�
 关于表单，其层次关系是form为表单标签，input等是表单项，input里面的type是属性，其详细知识如图所示
 
 ![](images/2026-09-23-22-38-51-image.png)
+
+---
+
+给 form 设置 `display:flex`，form 就可以变成 flex 容器，它的直接子 div 就全部变成 flex 子项，横向排在一行（因为div默认是独自占一行的，如果想去掉这个默认，就加让其变成flex子项）。但必须强调，只有**直接子div**生效，如图所示，间接子div是不生效的
+
+![](images/2026-09-24-16-51-11-image.png)
+
+---
+
+下图这两个CSS代码是协同工作的，`.search-wrap {}`：作用在外层父容器，`.search-wrap input, .search-wrap select {}`：作用父盒子里面的 input、select 后代元素
+
+![](images/2026-09-24-17-03-44-image.png)
+
+使用示例如图所示，只需要引入一次search-wrap，就可以设置父div的样式，也可以设置子div里的input和select样式
+
+![](images/2026-09-24-17-05-30-image.png)
+
+---
+
+很多标签都可以开flex的，不一定是div，如下二图所示
+
+![](images/2026-09-24-17-41-38-image.png)
+
+![](images/2026-09-24-17-42-09-image.png)
