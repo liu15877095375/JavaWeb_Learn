@@ -1,162 +1,274 @@
-/* 全局样式重置 */
+/* ========== 全局重置与基础变量 ========== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 顶部导航栏样式 */
-.top-nav {
-    /* 设置盒子背景为浅灰色。 */
-    background-color: #e5e5e5;
-    /* 上下内边距 0，左右内边距 24px；让里面内容距离盒子左右两边留出空隙，不会贴紧边缘。 */
-    padding: 0 24px;
-    /* 固定导航栏盒子高度 56 像素。 */
-    height: 56px;
-    /* flex布局实现左右分布 */
-    /* 开启Flex 弹性布局；此时这个 div 的直接子元素变成弹性项目，可以用 flex 属性控制排布。 */
-    display: flex;
-    /* 水平方向：两边对齐。第一个子元素靠最左边，最后一个子元素靠最右边，中间空余空间放两者之间 → 实现标题居左、退出链接居右。 */
-    justify-content: space-between;
-    /* 垂直方向居中对齐。子元素（标题、链接）在 56px 高的导航栏里面上下居中，不会贴顶部或者底部。 */
-    align-items: center;
+:root {
+    /* 主色：统一使用一套蓝色系 */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    /* 功能色：降低饱和度，融入统一风格 */
+    --success: #16a34a;
+    --success-hover: #15803d;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+
+    /* 中性色 */
+    --text-1: #1f2937;
+    --text-2: #4b5563;
+    --text-3: #6b7280;
+    --border: #e5e7eb;
+    --bg-page: #f3f4f6;
+    --bg-card: #ffffff;
+    --bg-header: #f9fafb;
+
+    /* 统一圆角与阴影 */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-/* 标题样式 */
-.nav-title {
-    /* 加粗醒目 */
-    font-weight: bold;
-    /* 设置字体大小 */
-    font-size: 20px;
-    /* 设置字体颜色 */
-    color: black;
-    /* 设置字体样式 */
-    font-family: "仿宋";
-}
-
-/* 退出登录超链接样式 */
-.logout-link {
-    /* 设置字体颜色 */
-    color: black;
-    /* 去除下划线 */
-    text-decoration: none;
-    /* 设置字体大小 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-1);
     font-size: 14px;
-    /* 设置字体样式 */
-    font-family: "仿宋";
+    line-height: 1.5;
+}
+
+/* ========== 顶部导航栏 ========== */
+.top-nav {
+    background-color: var(--bg-card);
+    height: 56px;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.3px;
+}
+
+.logout-link {
+    font-size: 14px;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .logout-link:hover {
-    text-decoration: underline;
+    color: var(--primary);
 }
 
-.search-wrap{
+/* ========== 页面容器 ========== */
+.page-container {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 24px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap:50px;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.search-wrap input,
-.search-wrap select {
+/* ========== 搜索卡片 ========== */
+.search-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 24px;
+}
+
+.search-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.search-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.search-item label {
+    font-size: 13px;
+    color: var(--text-2);
+}
+
+.search-item input,
+.search-item select {
     width: 200px;
     height: 36px;
-    padding:0 8px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background-color: #fff;
+    color: var(--text-1);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/*按钮组内部再开flex，按钮之间间距调小，比如12px*/
-.btn-group{
-    display:flex;
-    gap:12px;
-}
-/*按钮高度和输入框保持一样36px，左右给内边控宽度*/
-.btn-group button{
-    height:36px;
-    padding:0 16px;
+.search-item input:focus,
+.search-item select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-.background‑color{
-    /* 设置背景颜色为淡灰色 */
-    background-color: #f5f5f5;
+.btn-group {
+    display: flex;
+    gap: 12px;
 }
 
-/* 表格容器 */
-.table-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+/* ========== 按钮体系：全部统一高度、圆角、字体和过渡 ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-family: inherit;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-default {
+    background-color: #fff;
+    color: var(--text-2);
+    border-color: var(--border);
+}
+
+.btn-default:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.btn-success {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.btn-success:hover {
+    background-color: var(--success-hover);
+    border-color: var(--success-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+    border-color: var(--danger-hover);
+}
+
+.btn-sm {
+    height: 32px;
+    padding: 0 14px;
+    font-size: 13px;
+}
+
+/* ========== 表格卡片 ========== */
+.table-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
 }
 
-/* 表格基础样式 */
+/* ========== 表格：统一表头、单元格、行高和分隔线 ========== */
 .info-table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-}
-
-/* 表头样式 */
-.info-table thead th {
-    background-color: #409eff;
-    color: #fff;
-    font-weight: 500;
-    padding: 14px 12px;
-    font-size: 15px;
-}
-
-/* 单元格样式 */
-.info-table tbody td {
-    padding: 12px;
-    border-bottom: 1px solid #ebeef5;
-    color: #606266;
     font-size: 14px;
 }
 
-/* 隔行变色 */
+.info-table thead th {
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--primary);
+}
+
+.info-table tbody td {
+    padding: 14px 12px;
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border);
+}
+
 .info-table tbody tr:nth-child(even) {
-    background-color: #fafafa;
+    background-color: var(--bg-header);
 }
 
-/* 行悬停效果 */
 .info-table tbody tr:hover {
-    background-color: #ecf5ff;
+    background-color: var(--primary-light);
 }
 
-/* 头像固定大小 */
+.info-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========== 头像 ========== */
 .avatar {
-    width: 60px;
-    height: 60px;
-    object-fit: cover; /* 保持比例裁剪，不变形 */
-    border-radius: 50%; /* 圆形头像，不需要可删掉 */
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--border);
     display: block;
     margin: 0 auto;
 }
 
-/* 按钮基础样式 */
-.btn {
-    padding: 6px 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    margin: 0 4px;
-    transition: opacity 0.2s;
+/* ========== 操作列按钮间距 ========== */
+.action-group {
+    display: inline-flex;
+    gap: 8px;
+    justify-content: center;
 }
 
-.btn:hover {
-    opacity: 0.85;
-}
-
-/* 编辑按钮 */
-.btn-edit {
-    background-color: #67c23a;
-    color: #fff;
-}
-
-/* 删除按钮 */
-.btn-delete {
-    background-color: #f56c6c;
-    color: #fff;
+/* ========== 页脚 ========== */
+.footer-fx {
+    text-align: center;
+    color: var(--text-3);
+    font-size: 12px;
+    padding: 24px 0 32px;
 }

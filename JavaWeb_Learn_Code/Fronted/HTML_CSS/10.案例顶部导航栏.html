@@ -1,17 +1,11 @@
-<!-- 你是一名前端开发工程师，现需要制作一个HTML页面，这个页面1.内容:要展示一个醒目(加粗加粗展示)的标题，标题内窄2.布局:标题和退出登录的超链接，展示在一行里面。标题居左显示，退出登录的超链接居右展示。3.给整个顶部导航栏，设置一个灰色的背景色。请帮我生成这个HTML页面。
-共分为4个部分，先实现第一个部分-顶部导航栏。具体需求如下:
-Tlias智能学习辅助系统;还要展示一个.“退出登录”的超链接。 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tlias智能学习辅助系统</title>
-    <!-- 外部CSS样式引入 -->
-    <link rel="stylesheet" href="css/LearnSystem.css">
+    <link rel="stylesheet" href="css/LearnSystem.css" />
 </head>
-
 <body>
     <!-- 顶部导航栏 -->
     <div class="top-nav">
@@ -19,68 +13,87 @@ Tlias智能学习辅助系统;还要展示一个.“退出登录”的超链接�
         <a href="#" class="logout-link">退出登录</a>
     </div>
 
-    <div class="background‑color">
-        <!-- action是保存路径，method是提交的方法 -->
-        <form action="/save" method="post" class="search-wrap">
-            <div>
-                <label for="name">姓名</label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div>
-                <label for="gender">性别</label>
-                <select name="gender" id="gender">
-                    <option value="">请选择</option>
-                    <option value="1">男</option>
-                    <option value="2">女</option>
-                </select>
-            </div>
-            <div>
-                <label for="position">职位</label>
-                <select name="position" id="position">
-                    <option value="">请选择</option>
-                    <option value="1">班主任</option>
-                    <option value="2">讲师</option>
-                    <option value="3">学工主管</option>
-                    <option value="4">教研主管</option>
-                    <option value="5">咨询师</option>
-                </select>
-            </div>
-            <div class="btn-group">
-                <button type="submit">查询</button>
-                <button type="reset">清空</button>
-            </div>
-        </form>
+    <!-- 页面主体容器 -->
+    <div class="page-container">
+        <!-- 搜索筛选区域 -->
+        <div class="search-card">
+            <form action="/save" method="post" class="search-wrap">
+                <div class="search-item">
+                    <label for="name">姓名</label>
+                    <input type="text" name="name" id="name" />
+                </div>
+
+                <div class="search-item">
+                    <label for="gender">性别</label>
+                    <select name="gender" id="gender">
+                        <option value="">请选择</option>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </div>
+
+                <div class="search-item">
+                    <label for="position">职位</label>
+                    <select name="position" id="position">
+                        <option value="">请选择</option>
+                        <option value="1">班主任</option>
+                        <option value="2">讲师</option>
+                        <option value="3">学工主管</option>
+                        <option value="4">教研主管</option>
+                        <option value="5">咨询师</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">查询</button>
+                    <button type="reset" class="btn btn-default">清空</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 数据表格 -->
+        <div class="table-card">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>头像</th>
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>李四</td>
+                        <td>男</td>
+                        <td>
+                            <img src="img/2.jpg" alt="头像" class="avatar" />
+                        </td>
+                        <td>校长</td>
+                        <td>2026</td>
+                        <td>2026</td>
+                        <td>
+                            <div class="action-group">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    编辑
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    删除
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="table-container">
-        <table class="info-table">
-            <thead>
-                <tr>
-                    <th>姓名</th>
-                    <th>性别</th>
-                    <th>头像</th>
-                    <th>职位</th>
-                    <th>入职日期</th>
-                    <th>最后操作时间</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>李四</td>
-                    <td>男</td>
-                    <td><img src="img/2.jpg" alt="头像" class="avatar"></td>
-                    <td>校长</td>
-                    <td>2026</td>
-                    <td>2026</td>
-                    <td>
-                        <button type="button" class="btn btn-edit">编辑</button>
-                        <button type="button" class="btn btn-delete">删除</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- 页脚 -->
+    <footer class="footer-fx">
+        <p>飞翔的猪猪熊所有</p>
+    </footer>
 </body>
-
 </html>
